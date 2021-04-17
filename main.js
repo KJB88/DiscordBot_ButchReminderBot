@@ -3,7 +3,8 @@ const client = new Discord.Client();
 const prefix = '!';
 
 client.on('ready', () => {
-    console.log("Logged in as Butch!'");
+    console.log("Logged in as Butch!");
+    client.user.setActivity(" Baseili", {type: "WATCHING"});
 });
 
 client.on('message', message =>
@@ -17,6 +18,18 @@ const command = args.shift().toLowerCase();
 
 switch (command)
 {
+    case 'ping':
+        message.reply("Pong!");
+        break;
+
+    case 'victimise':
+        message.guild.members.fetch('227885873130242049')
+        .then(member =>
+        {
+            message.channel.send("Twat, " + "<@" + member.id + ">");
+        });
+        break;
+
     case 'remind':
         break;
 
