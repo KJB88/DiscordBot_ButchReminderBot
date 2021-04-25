@@ -13,7 +13,7 @@ client.on('message', message =>
     // Check for prefix and self
 if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-const args = message.content.slice(prefix.length).split('/');
+const args = message.content.slice(prefix.length).split(' ');
 const command = args.shift().toLowerCase();
 
 switch (command)
@@ -22,7 +22,7 @@ switch (command)
         message.reply("Pong!");
         break;
 
-    case 'victimise':
+    case 'victimiseAl':
         message.guild.members.fetch('227885873130242049')
         .then(member =>
         {
@@ -30,10 +30,28 @@ switch (command)
         });
         break;
 
+    case 'victimise':
+        if (args.length == 0)
+        {
+            message.reply("Ey up, you're missing the twat you want me to victimise!");
+            break;
+        }
+
+        var matching_client = client.users.cache.find(user => user.username === args[0]);
+
+        message.reply(matching_client.username);
+        //message.reply("Couldn't find the twat, soz m8.");
+        break;
+
     case 'remind':
         break;
 
     case 'update':
+        break;
+
+    case 'args':
+
+        message.reply(args.length.toString());
         break;
 
 }
