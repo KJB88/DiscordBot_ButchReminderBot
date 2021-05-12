@@ -9,6 +9,8 @@ const prefix = "!";
 // REMINDERS
 var reminderDelay = 24 * 60 * 60 * 1000; // hours in a day * minutes in an hour * seconds in a minute * milliseconds in a second
 var reminderChannel;
+var reminderArray = [];
+let reminder = new Reminder("Test", 5000, '243459418744815627');
 
 // LOGIN
 client.login(token);
@@ -21,11 +23,14 @@ client.on("ready", () => {
   console.log("TASK: Fetching member cache...");
   client.guilds.fetch("642796636354904074").then((guild) => {
     guild.members.fetch().then((members) => {
+      console.log("-START MEMBER CACHING-");
       members.forEach((member) => {
         console.log(member.displayName);
       });
+      
+      console.log("-END MEMBER CACHING-");
+      console.log("COMPLETE: Member caching complete.");
     }).catch(console.error);
-    console.log("COMPLETE: Member caching complete.");
   }).catch(console.error);
 
   console.log("TASK: Fetching channel ID for reminder messages...");
@@ -76,13 +81,14 @@ client.on("message", (message) => {
       // eg setTimer remindAl 1 hour
       break;
 
-    case "getReminder".toLowerCase():
+    case "reminder".toLowerCase():
       // getReminder reminderName
       // Displays class values
       // eg Reminder Name: annoyAlex, Delay: 24 hours, Message: REMINDER FOR ALEX
       break;
 
     case "addGame".toLowerCase():
+
       break;
 
     case "victimiseAl".toLowerCase():
@@ -107,21 +113,6 @@ client.on("message", (message) => {
       } else {
         message.channel.send("Twat, " + "<@" + User.id + ">");
       }
-
-      //var matching_client = client.users.cache.find(user => user.username === args[0]);
-
-      //message.reply(matching_client.username);
-      //message.reply("Couldn't find the twat, soz m8.");
-      break;
-
-    case "remind":
-      break;
-
-    case "update":
-      break;
-
-    case "args":
-      message.reply(args.length.toString());
       break;
   }
 });
@@ -132,6 +123,16 @@ function Remind() {
   // Set reminder time
   // Set reminder info
   // Execute
+}
+
+function SetReminder(name, interval, target)
+{
+
+}
+
+function RemoveReminder(name)
+{
+
 }
 
 // HELPER FUNCTIONS
