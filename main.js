@@ -2,8 +2,8 @@
 //const Reminder = r('reminder.js');
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const token = "ODM3MDU1OTMwNjkyMDA5OTk1.YIm_FQ.ShoMTZHhn-B4-JOKe6ynbV-jtd0";
-const Ferrum = "642796636354904074";
+const token = "TOTALLY_SECRET_DISCORD_BOT_ACCESS_TOKEN";
+const Ferrum = "FERRUM_IS_THE_NAME_OF_MY_DISCORD_SERVER_ID";
 
 // CORE COMMANDS
 const prefix = "!";
@@ -35,7 +35,7 @@ class Game
 var reminderDelay = 24 * 60; // hours in a day * minutes in an hour
 var reminderChannel;
 var reminderArray = [];
-let reminder = new Reminder("Test", reminderDelay, "243459418744815627", "243459418744815627");
+let reminder = new Reminder("Test", reminderDelay, "INSERT_SETFOR_NAME", "INSERT_SETBY_NAME");
 reminderArray.push(reminder);
 
 // LOGIN
@@ -47,7 +47,7 @@ client.on("ready", () =>
   console.log("NOTE: Logged in as Butch! Bot ready.");
 
   // SET STATUS
-  client.user.setActivity(" Baseili", { type: "WATCHING" });
+  client.user.setActivity("INSERTNAME", { type: "WATCHING" });
 
   // CACHE MEMBERS
   client.guilds.fetch(Ferrum).then((guild) => {
@@ -64,8 +64,8 @@ client.on("ready", () =>
 
   // BIND OUTPUT CHANNEL
   console.log("TASK: Fetching channel ID for reminder messages...");
-  // 833107676899966996 - The-Turing-Test on Ferrum
-  reminderChannel = client.channels.cache.get('833107676899966996');
+  // INSERT CHANNEL ID - The-Turing-Test Channel on Ferrum
+  reminderChannel = client.channels.cache.get('INSERT_CHANNEL_ID');
   console.log("COMPLETE: Reminder channel bound to " + reminderChannel.name);
 });
 
@@ -112,7 +112,7 @@ client.on("message", (message) =>
     case "reminder".toLowerCase():
       // getReminder reminderName
       // Displays class values
-      // eg Reminder Name: annoyAlex, Delay: 24 hours, Message: REMINDER FOR ALEX
+      // eg Reminder Name: annoyNAME, Delay: 24 hours, Message: REMINDER FOR NAME
       break;
 
     case "listReminders".toLowerCase():
@@ -152,7 +152,7 @@ client.on("message", (message) =>
       break;
       
     // VICTIMISE
-    case "victimiseAl".toLowerCase():
+    case "victimiseNAME".toLowerCase():
 
       // Check guild for member ID
       message.guild.members("227885873130242049").then((member) => {
@@ -165,7 +165,7 @@ client.on("message", (message) =>
       if (args.length == 0) 
       {
         message.reply(
-          "Ey up, you're missing the twat you want me to victimise!"
+          "Ey up, you're missing the twat you want me to victimise!" // Missing args
         );
         break;
       } 
@@ -179,12 +179,12 @@ client.on("message", (message) =>
       // If we couldn't find the user
       if (!User) 
       {
-        message.reply("Couldn't find the twat, soz m8.");
+        message.reply("Couldn't find the twat, soz m8."); // User isn't around
       } 
       // else send the mention
       else 
       {
-        message.channel.send("Twat, " + "<@" + User.id + ">");
+        message.channel.send("Twat, " + "<@" + User.id + ">"); // Fire it off
       }
       break;
   }
